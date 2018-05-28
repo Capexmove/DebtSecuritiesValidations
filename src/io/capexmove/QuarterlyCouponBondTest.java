@@ -11,8 +11,12 @@ public class QuarterlyCouponBondTest extends TestCase {
     public void setUp() throws Exception {
         super.setUp();
         Date date = new Date();
-        quarterlyCouponBond = new QuarterlyCouponBond(1000,
-                                                            date.getTime(),
+        quarterlyCouponBond = createQuarterlyBond();
+    }
+
+    private QuarterlyCouponBond createQuarterlyBond() {
+        return new QuarterlyCouponBond(1000,
+                                                            1514797984,
                                                             154624758,
                                                             10,
                                                             BondBase.Frequency.Quarterly,
@@ -21,15 +25,20 @@ public class QuarterlyCouponBondTest extends TestCase {
     }
 
     public void testQuarterlyCouponBondIsConstructedProperly() {
-        assertEquals(0,quarterlyCouponBond.getCouponPayment());
-        assertEquals(0,quarterlyCouponBond.getEthToUSDPrice());
-        assertEquals(0,quarterlyCouponBond.getEthToUSDPrice());
+        assertEquals(10.0,quarterlyCouponBond.getCouponRate(),0.01);
+        assertEquals(100,quarterlyCouponBond.getCouponPayment());
+        assertEquals(500.0,quarterlyCouponBond.getEthToUSDPrice());
+        assertEquals(1514797984,quarterlyCouponBond.getIssueDateInMilliSec());
+        assertEquals(154624758,quarterlyCouponBond.getMaturityDateInMilliSec());
     }
 
-    public void testCouponPayments() {
-        assertEquals(0,quarterlyCouponBond.getCouponPayment());
+    public void testCouponPaymentValue() {
+        assertEquals(100,quarterlyCouponBond.getCouponPayment());
     }
 
+    public void testTotalPaymentDueAfterVariousCouponPayment() {
+        assertEquals(100,quarterlyCouponBond.getCouponPayment());
+    }
 
     public void tearDown() throws Exception {
     }

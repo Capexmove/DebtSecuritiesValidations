@@ -31,4 +31,6 @@ public interface BondBase {
     long getIssueDateInMilliSec();
 
     void pay(int amount);
+
+    int totalPaymentDue();
 }

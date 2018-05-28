@@ -79,4 +79,9 @@ public class ZeroCouponBond implements BondBase {
     public void pay(int amount) {
         totalPaid =+ amount;
     }
+
+    @Override
+    public int totalPaymentDue() {
+        return 0;
+    }
 }

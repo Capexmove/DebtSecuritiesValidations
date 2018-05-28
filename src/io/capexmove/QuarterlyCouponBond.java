@@ -32,7 +32,7 @@ public class QuarterlyCouponBond implements BondBase {
 
     @Override
     public double getCouponRate() {
-        return 0;
+        return couponRate;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class QuarterlyCouponBond implements BondBase {
 
     @Override
     public long getMaturityDateInMilliSec() {
-        return 0;
+        return maturityDate;
     }
 
     @Override
@@ -72,11 +72,16 @@ public class QuarterlyCouponBond implements BondBase {
 
     @Override
     public long getIssueDateInMilliSec() {
-        return 0;
+        return issueDate;
     }
 
     @Override
     public void pay(int amount) {
         totalPaid =+ amount;
+    }
+
+    @Override
+    public int totalPaymentDue() {
+        return 0;
     }
 }
